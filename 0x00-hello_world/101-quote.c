@@ -1,9 +1,9 @@
-  
 #include <stdio.h>
 #include <unistd.h>
 /**
-*main - main block
-*Return: 1
+*main - Entry point
+*
+*Return: return 1
 */
 int main(void)
 {
