@@ -14,6 +14,6 @@ q = q;
 	for (ch = 'a'; ch <= 'z'; ch++)
 	if (ch != e && ch != q)
 	putchar(ch);
-	putcha(r'\n');
+	putchar('\n');
 return (0);
 }
