@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 /**
+*main - main block
 *Write a program that prints all possible combinations of single-digit numbers
 *Return: 0
 */
