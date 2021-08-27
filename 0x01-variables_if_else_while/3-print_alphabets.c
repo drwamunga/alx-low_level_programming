@@ -3,7 +3,7 @@
 #include <time.h>
 /**
 * main - main block
-* This program prints alphabet in lowcase then in uppercase, followed by a new line.
+* This program prints alphabet in lowcase then in uppercase.
 *Return: 0
 */
 int main(void)
@@ -15,5 +15,5 @@ int main(void)
 	for (ch = 'A'; ch <= 'Z'; ch++)
 	putchar(ch);
 	putchar('\n');
-return (0);
+	return (0);
 }
