@@ -4,11 +4,8 @@
 
 /**
 *main - main block
-*
-* This program prints if a random number is 
-* greater than 5
-* less than 6 and not 0
-* and if number is 0
+*Print statements based on the last digit of the random number.
+* Return: 0
 */
 
 	int main(void)
