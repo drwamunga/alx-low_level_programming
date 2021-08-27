@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-
 /**
 *main - main block
 *Print statements based on the last digit of the random number.
@@ -22,6 +21,6 @@
 	else if (b < 6)
 		printf("Last digit of %d is %d and is less than 6 and not 0\n", n, b);
 	else if (b == 0)
-		printf("Last digit od %d is %d and is 0\n", n, b);
+		printf("Last digit of %d is %d and is 0\n", n, b);
 	return (0);
 }
