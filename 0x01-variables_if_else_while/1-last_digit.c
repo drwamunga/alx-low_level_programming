@@ -19,10 +19,10 @@ int main(void)
 	n = rand() - RAND_MAX / 2;
 	
 	if (n > 5)
-		printf("%d and is greater than 5");
+		printf("%d and is greater than 5", n);
 	else if (n == 6)
-		printf("%d and is less than 6 and not 0");
+		printf("%d and is less than 6 and not 0", n);
 	else
-		print("%d and is 0");
+		print("%d and is 0", n);
 	return (0);
 }
