@@ -5,6 +5,7 @@
 *main - main block
 *prints all single digit numbers of base 10 starting from 0
 *using putchar function and cant use char variable type
+*Return: 0
 */
 int main(void)
 {
