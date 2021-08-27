@@ -9,8 +9,11 @@
 int main(void)
 {
 int d;
-        for (d = 0; d <= 15; d++)
-        putchar(d + '0');
+char ch;
+        for (d = 0; d <= '9'; d++)
+        putchar(d);
+	for (ch = 'a'; ch <= 'f'; ch++)
+	putchar(ch);
         putchar('\n');
 return (0);
 }
