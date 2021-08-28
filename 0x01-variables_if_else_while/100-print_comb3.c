@@ -8,19 +8,26 @@
 */
 int main(void)
 {
-int d;
-	for (d = 1; d <= 89; d++)
+int i, a, b;
+i = 0;
+	while (i < 100)
 	{
+		a = i % 10;
+		b = i / 10;
+
+		if (b < a)
 	{
-		putchar((d / 10) + '0');
-		putchar((d % 10) + '0');
+		putchar(b + '0');
+		putchar(b + '0');
 	}
-	if (d != 89)
+	if (d < 89)
 	{
-		putchar(',');
-		putchar(' ');
+		putchar('44');
+		putchar('32');
 	}
 	}
+
+	i++;
 		putchar('\n');
 return (0);
 }
