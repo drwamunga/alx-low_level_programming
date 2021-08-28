@@ -18,7 +18,7 @@ i = 0;
 		if (b < a)
 	{
 		putchar(b + '0');
-		putchar(b + '0');
+		putchar(a + '0');
 	}
 	if (i < 89)
 	{
