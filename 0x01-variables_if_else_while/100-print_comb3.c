@@ -20,10 +20,10 @@ i = 0;
 		putchar(b + '0');
 		putchar(b + '0');
 	}
-	if (d < 89)
+	if (i < 89)
 	{
-		putchar('44');
-		putchar('32');
+		putchar(44);
+		putchar(32);
 	}
 	}
 
