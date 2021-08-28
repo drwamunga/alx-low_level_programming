@@ -18,7 +18,6 @@ int a, b, c, d;
 	{
 	c = j / 10; /* doubles snum */
 	d = j % 10; /* singles snum */
-	
 	if (a < c || (a == c && b < d))
 	{
 	putchar(a + '0');
