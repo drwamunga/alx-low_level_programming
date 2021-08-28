@@ -19,7 +19,7 @@ i = 0;
 	{
 		putchar(b + '0');
 		putchar(a + '0');
-	}
+
 	if (i < 89)
 	{
 		putchar(44);
@@ -28,6 +28,7 @@ i = 0;
 	}
 
 	i++;
+	}
 		putchar('\n');
 return (0);
 }
