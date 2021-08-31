@@ -1,17 +1,17 @@
 #include "holberton.h"
 /**
- * main - main block
- * write a program tha prints Holberton, followed by a new line.
- * Return: 0
- */
+* main - Entry point
+* write a program tha prints Holberton, followed by a new line.
+* Return: Always (Success)
+*/
 int main(void)
 {
-	char holberton[] = "Holberton";
-	int i = 0;
-	while (holberton[i] != '\0')
+	char *sh = "Holberton";
+
+	while (*sh)
 	{
-		_putchar(holberton[i]);
-		i++;
+		_putchar(*sh);
+		sh++;
 	}
 	_putchar('\n');
 return (0);
