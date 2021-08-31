@@ -6,8 +6,8 @@
 */
 int _isalpha(int c)
 {
-	if ((c >= 97 && c <= 122) || (c >= 65 && <= 90))
-
+	if ((c >= 'a' && c <= 'z') || (c >= 'A' && <= 'Z'))
+		
 		return (1);
 
 	else
