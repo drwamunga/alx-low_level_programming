@@ -1,15 +1,14 @@
 #include "holberton.h"
 
 /**
- * print_numbers - a function that prints the numbers, from 0 to 9
- *
- * Return: 0-9 followed by newline
+ * _isdigit -  a function that checks for a digit 0-9
+ * @c: input
+ * Return: 1 if c is a digit, 0 otherwise
  */
-void print_numbers(void)
+int _isdigit(int c)
 {
-	int i;
-
-	for (i = 0; i <= 9; i++)
-		_putchar(i + '0');
-	_putchar('\n');
+	if ((c >= 48) && (c <= 57))
+		return (1);
+	else
+		return (0);
 }
