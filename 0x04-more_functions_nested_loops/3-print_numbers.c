@@ -1,17 +1,19 @@
-#include "main.h"
-
+#include "holberton.h"
 /**
- * print_numbers - a function that prints the numbers, from 0 to 9
+ *print_numbers - a function that prints numbers from 0 to 9
+ *followed by a new line
  *
- * Return: 0-9 followed by newline
+ *Return: The returned value will be 0.
  */
+
 void print_numbers(void)
 {
-	int i;
+	int i = 0;
 
-	for (i = '0'; i <= '9'; i++)
+	while (i < 10)
 	{
-	_putchar(i);
+		_putchar(i + '0');
+		i++;
 	}
 	_putchar('\n');
 }
