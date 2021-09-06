@@ -3,11 +3,9 @@
 
 int _strlen(char *s)
 {
-	char *s
 	int len;
 
-	for (len = 0; *s[len] != '\0'; ++len);
-	printf("%d\n", len);
+	for (len = 0; s[len] != '\0'; ++len);
 
-	return 0;
+	return (len);
 }
