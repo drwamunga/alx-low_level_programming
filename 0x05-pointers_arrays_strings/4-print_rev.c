@@ -2,24 +2,17 @@
 
 void print_rev(char *s)
 {
-	int l, i;
-	char *begin_ptr, *end_ptr, ch;
+	int count = 0;
+	int i, n;
 
-	l = strlen(s);
-
-	begin_ptr = s;
-	end_ptr = s;
-
-	for (i = 0; i < l - 1; i++)
-		end_ptr++;
-
-	for (i = 0; i < l / 2; i++)
+	for (i = 0; s[i] != '\0'; i++)
 	{
-		ch = *end_ptr;
-		*end_ptr = *begin_ptr;
-		*begin_ptr = ch;
-		begin_ptr++;
-		end_ptr--;
+		count++;
 	}
-	print_rev(s);
+
+	for (n = (count - 1); n >= 0; n++)
+	{
+		_putchar(s[n]);
+	}
+	_putchar('\n');
 }
