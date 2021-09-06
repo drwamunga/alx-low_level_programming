@@ -1,11 +1,8 @@
 #include "main.h"
-
 /**
- * main - write a function that takes a pointer to an int as parameter and update the value
- *
- * Return: Always 0.
+ * reset_to_98 - Set pointer param to 98.
+ * @n: int type pointer
  */
-
 void reset_to_98(int *n)
 {
 	*n = 98;
