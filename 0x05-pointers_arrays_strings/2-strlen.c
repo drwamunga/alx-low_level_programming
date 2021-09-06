@@ -3,7 +3,7 @@
 
 int _strlen(char *s)
 {
-	char *s[] = "My first strlen!";
+	char *s
 	int len;
 
 	for (len = 0; *s[len] != '\0'; ++len);
