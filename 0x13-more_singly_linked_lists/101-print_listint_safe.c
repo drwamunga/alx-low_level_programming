@@ -1,97 +1,68 @@
 #include "lists.h"
-
 /**
- * count_nodes_till_loop - count nodes to know now many unique nodes to print
- * @head: pointer to head pointer of linked list
- * Return: number of unique nodes in list before a loop
+ *add_nodeaddr - A function that mallocs a new space for a list
+ *@head: A double pointer that points to my second list header, head_2.
  */
-int count_nodes_till_loop(const listint_t *head)
+addr_list *add_nodeaddr(addr_list **head, const void *addr)
 {
-	int count = 0;
-	const listint_t *turtle, *hare;
+	addr_list *new_node;
 
-	turtle = hare = head;
-
-	while (turtle != NULL && hare != NULL)
+	new_node = malloc(sizeof(addr_list));
+	if (new_node == NULL)
 	{
-		turtle = turtle->next;
-		hare = hare->next->next;
-		count++;
-
-		if (turtle == hare)
-		{
-			turtle = head;
-			while (turtle != hare)
-			{
-				turtle = turtle->next;
-				hare = hare->next;
-				count++;
-			}
-			return (count);
-		}
+		free_listaddr(*head);
+		exit (98);
 	}
-	return (0);
+	new_node->addr = addr;
+	new_node->next = *head;
+	*head = new_node;
+	return (new_node);
 }
-
 /**
- * loop - find if there's a loop in linked list
- * @head: pointer to head pointer of linked list
- * Return: 0 if no loop, 1 if loop
+ *free_listaddr - a function that frees a linked list
+ *@head: a pointer variable that points to the start of a newly made list
  */
-int loop(const listint_t *head)
+void free_listaddr(addr_list *head)
 {
-	const listint_t *turtle, *hare;
-
-	turtle = hare = head;
-
-	while (turtle != NULL && hare != NULL)
+	addr_list *current_node;
+	while (head != NULL)
 	{
-		turtle = turtle->next;
-		hare = hare->next->next;
-
-		if (turtle == hare)
-			return (1);
+		current_node = head;
+		head = head->next;
+		free(current_node);
 	}
-	return (0);
 }
-
 /**
- * print_listint_safe - prints list with addresses
- * @head: pointer to head pointer of linked list
- * Return: number of nodes in list, exit(98) if failed
+ *print_listint_safe - a function that prints the node and the
+ *number within a node,
+ *Return: the number of nodes
  */
 size_t print_listint_safe(const listint_t *head)
 {
-	int count = 0;
-	int loop_found;
-	size_t num_nodes = 0;
-	const listint_t *tmp;
+	addr_list *current_NewNode;
+	addr_list *head_2;
+	size_t i;
 
-	if (head == NULL)
-		exit(98);
-
-	loop_found = loop(head);
-
-	if (loop_found == 1) /* print upto last node before loop if loop */
+	i = 0;
+	head_2 = NULL;
+	while (head != NULL)
 	{
-		count = count_nodes_till_loop(head);
-		for (loop_found = 0; loop_found < count; loop_found++)
+		current_NewNode = head_2;
+		while (current_NewNode != NULL)
 		{
-			printf("[%p] %d\n", (void *)tmp, tmp->n);
-			num_nodes += 1;
-			tmp = tmp->next;
+			if (head == current_NewNode->addr)
+			{
+				printf("->[%p] %d\n", (void *)head, head->n);
+				free_listaddr(head_2);
+				return (i);
+			}
+			current_NewNode = current_NewNode->next;
 		}
+		printf("[%p] %d\n", (void *)head, head->n);
+		add_nodeaddr(&head_2, head);
+		head = head->next;
+		i++;
 	}
-	else if (loop_found == 0) /* print regularly upto NULL if no loop */
-	{
-		tmp = head;
-		while (tmp != NULL)
-		{
-			printf("[%p] %d\n", (void *)tmp, tmp->n);
-			num_nodes += 1;
-			tmp = tmp->next;
-		}
-	}
-
-	return (num_nodes);
+	free_listaddr(head_2);
+	return (i);
 }
