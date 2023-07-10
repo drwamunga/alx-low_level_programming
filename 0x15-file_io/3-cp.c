@@ -1,51 +1,52 @@
 #include "holberton.h"
-
-#define MAXSIZE 1204
-#define SE STDERR_FILENO
-
 /**
- * main - create the copy bash script
- * @ac: argument count
- * @av: arguments as strings
- * Return: 0
- */
-int main(int ac, char *av[])
+  * main - copy one file to another.
+  * @argc: argument count.
+  * @argv: argument vector.
+  *
+  * Return: 0.
+  */
+int main(int argc, char *argv[])
 {
-	int input_fd, output_fd, istatus, ostatus;
-	char buf[MAXSIZE];
-	mode_t mode;
+	int file1, file2, size;
+	char buf[1024];
 
-	mode = S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH;
-	if (ac != 3)
-		dprintf(SE, "Usage: cp file_from file_to\n"), exit(97);
-	input_fd = open(av[1], O_RDONLY);
-	if (input_fd == -1)
-		dprintf(SE, "Error: Can't read from file %s\n", av[1]), exit(98);
-	output_fd = open(av[2], O_CREAT | O_WRONLY | O_TRUNC, mode);
-	if (output_fd == -1)
-		dprintf(SE, "Error: Can't write to %s\n", av[2]), exit(99);
-	do {
-		istatus = read(input_fd, buf, MAXSIZE);
-		if (istatus == -1)
+	if (argc != 3)
+	{
+		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n"), exit(97);
+	}
+
+	file1 = open(argv[1], O_RDONLY, 0);
+	if (file1 == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Cant read from file %s\n", argv[1]);
+		exit(98);
+	}
+
+	file2 = open(argv[2], O_CREAT | O_TRUNC | O_WRONLY, 0664);
+	if (file2 == 1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]), exit(99);
+	}
+	while ((size = read(file1, buf, 1024)) > 0)
+	{
+		if (write(file2, buf, size) != size)
 		{
-			dprintf(SE, "Error: Can't read from file %s\n", av[1]);
-			exit(98);
+			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]), exit(99);
 		}
-		if (istatus > 0)
-		{
-			ostatus = write(output_fd, buf, (ssize_t) istatus);
-			if (ostatus == -1)
-			{
-				dprintf(SE, "Error: Can't write to %s\n", av[2]);
-				exit(99);
-			}
-		}
-	} while (istatus > 0);
-	istatus = close(input_fd);
-	if (istatus == -1)
-		dprintf(SE, "Error: Can't close fd %d\n", input_fd), exit(100);
-	ostatus = close(output_fd);
-	if (ostatus == -1)
-		dprintf(SE, "Error: Can't close fd %d\n", output_fd), exit(100);
+	}
+	if (size == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+		exit(98);
+	}
+	if (close(file1) != 0)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't close fd %i\n", file1), exit(100);
+	}
+	if (close(file2) != 0)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't close fd %i\n", file2), exit(100);
+	}
 	return (0);
 }
